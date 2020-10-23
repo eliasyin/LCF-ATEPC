@@ -198,7 +198,7 @@ class LCF_ATEPC(BertForTokenClassification):
         pooled_out = self.dropout(pooled_out)
         apc_logits = self.dense(pooled_out)
 
-        if labels is not None:
+        if labels is not None:  # 啥意思？
             loss_fct = CrossEntropyLoss(ignore_index=0)
             loss_sen = CrossEntropyLoss()
             loss_ate = loss_fct(ate_logits.view(-1, self.num_labels), labels.view(-1))

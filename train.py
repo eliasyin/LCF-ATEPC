@@ -72,7 +72,8 @@ def main(config):
         'restaurant': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
         # for loading domain-adapted BERT
         # 'restaurant': "../bert_pretrained_restaurant",
-        'twitter': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
+        # "bert-base-uncased",
+        'twitter': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased",
         'mixed': "bert-base-multilingual-uncased",
     }
 

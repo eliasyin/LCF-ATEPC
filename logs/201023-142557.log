@@ -1,6 +1,6 @@
-log file: logs/201023-100244.log
+log file: logs/201023-142557.log
 --------------------------------------------------------------------------------
-Config 1 (totally 2 configs)
+Config 1 (totally 3 configs)
 No.1 training process of 1
 Model name '/home/ycf19/tools/pretrained_models/bert/bert-base-uncased' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc). Assuming '/home/ycf19/tools/pretrained_models/bert/bert-base-uncased' is a path or url to a directory containing tokenizer files.
 Didn't find file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/added_tokens.json. We won't load it.
@@ -152,7 +152,7 @@ ATE_test_f1: 80.45(max:81.41)
 ********************************************************************************
 max_ate_test_f1:81.41 max_apc_test_acc: 78.14	max_apc_test_f1: 74.32 	
 --------------------------------------------------------------------------------
-Config 2 (totally 2 configs)
+Config 2 (totally 3 configs)
 No.1 training process of 1
 Model name '/home/ycf19/tools/pretrained_models/bert/bert-base-uncased' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc). Assuming '/home/ycf19/tools/pretrained_models/bert/bert-base-uncased' is a path or url to a directory containing tokenizer files.
 Didn't find file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/added_tokens.json. We won't load it.
@@ -218,128 +218,3 @@ Train 1 Epoch1
 ################################################################################
 Train 1 Epoch2
 ################################################################################
-################################################################################
-Train 1 Epoch3
-################################################################################
-################################################################################
-Train 1 Epoch4
-################################################################################
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 80.88(max: 80.88)  APC_test_f1: 70.46(max: 70.46)
-ATE_test_f1: 84.8(max:84.8)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 80.7(max: 80.88)  APC_test_f1: 64.22(max: 70.46)
-ATE_test_f1: 84.86(max:84.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 81.95(max: 81.95)  APC_test_f1: 72.37(max: 72.37)
-ATE_test_f1: 85.84(max:85.84)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.84(max: 82.84)  APC_test_f1: 72.61(max: 72.61)
-ATE_test_f1: 87.33(max:87.33)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.48(max: 82.84)  APC_test_f1: 72.9(max: 72.9)
-ATE_test_f1: 86.26(max:87.33)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 81.23(max: 82.84)  APC_test_f1: 68.32(max: 72.9)
-ATE_test_f1: 85.23(max:87.33)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.22(max: 82.84)  APC_test_f1: 72.53(max: 72.9)
-ATE_test_f1: 86.84(max:87.33)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 83.29(max: 83.29)  APC_test_f1: 75.11(max: 75.11)
-ATE_test_f1: 87.86(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.57(max: 83.29)  APC_test_f1: 73.75(max: 75.11)
-ATE_test_f1: 84.54(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 83.29(max: 83.29)  APC_test_f1: 74.79(max: 75.11)
-ATE_test_f1: 82.1(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.66(max: 83.29)  APC_test_f1: 73.37(max: 75.11)
-ATE_test_f1: 84.45(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch4, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 81.41(max: 83.29)  APC_test_f1: 68.79(max: 75.11)
-ATE_test_f1: 83.14(max:87.86)
-********************************************************************************
-################################################################################
-Train 1 Epoch5
-################################################################################
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 81.05(max: 83.29)  APC_test_f1: 76.08(max: 76.08)
-ATE_test_f1: 85.08(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.66(max: 83.29)  APC_test_f1: 73.28(max: 76.08)
-ATE_test_f1: 85.03(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.31(max: 83.29)  APC_test_f1: 71.43(max: 76.08)
-ATE_test_f1: 86.5(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 83.2(max: 83.29)  APC_test_f1: 73.65(max: 76.08)
-ATE_test_f1: 85.72(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 83.56(max: 83.56)  APC_test_f1: 75.72(max: 76.08)
-ATE_test_f1: 85.35(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.57(max: 83.56)  APC_test_f1: 72.21(max: 76.08)
-ATE_test_f1: 85.86(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 84.18(max: 84.18)  APC_test_f1: 76.94(max: 76.94)
-ATE_test_f1: 86.54(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 83.02(max: 84.18)  APC_test_f1: 71.65(max: 76.94)
-ATE_test_f1: 86.18(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 82.31(max: 84.18)  APC_test_f1: 73.79(max: 76.94)
-ATE_test_f1: 82.46(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 83.2(max: 84.18)  APC_test_f1: 75.31(max: 76.94)
-ATE_test_f1: 85.54(max:87.86)
-********************************************************************************
-********************************************************************************
-Train 1 Epoch5, Evaluate for atepc_datasets/restaurant
-APC_test_acc: 81.95(max: 84.18)  APC_test_f1: 73.34(max: 76.94)
-ATE_test_f1: 85.11(max:87.86)
-********************************************************************************
-max_ate_test_f1:87.86 max_apc_test_acc: 84.18	max_apc_test_f1: 76.94 	
