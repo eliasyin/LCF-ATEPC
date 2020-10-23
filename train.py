@@ -68,11 +68,11 @@ def main(config):
         'car': "bert-base-chinese",
         'phone': "bert-base-chinese",
         'notebook': "bert-base-chinese",
-        'laptop': "bert-base-uncased",
-        'restaurant': "bert-base-uncased",
+        'laptop': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
+        'restaurant': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
         # for loading domain-adapted BERT
         # 'restaurant': "../bert_pretrained_restaurant",
-        'twitter': "bert-base-uncased",
+        'twitter': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
         'mixed': "bert-base-multilingual-uncased",
     }
 

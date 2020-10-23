@@ -1,0 +1,6 @@
+log file: logs/201023-095843.log
+--------------------------------------------------------------------------------
+Config 1 (totally 2 configs)
+No.1 training process of 1
+https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt not found in cache or force_download set to True, downloading to /tmp/tmp5__nf8x4
+Couldn't reach server to download vocabulary.
