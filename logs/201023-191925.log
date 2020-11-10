@@ -1,0 +1,62 @@
+log file: logs/201023-191925.log
+--------------------------------------------------------------------------------
+Config 1 (totally 3 configs)
+No.1 training process of 1
+Model name '/home/ycf19/tools/pretrained_models/bert/bert-base-uncased' not found in model shortcut name list (bert-base-uncased, bert-large-uncased, bert-base-cased, bert-large-cased, bert-base-multilingual-uncased, bert-base-multilingual-cased, bert-base-chinese, bert-base-german-cased, bert-large-uncased-whole-word-masking, bert-large-cased-whole-word-masking, bert-large-uncased-whole-word-masking-finetuned-squad, bert-large-cased-whole-word-masking-finetuned-squad, bert-base-cased-finetuned-mrpc). Assuming '/home/ycf19/tools/pretrained_models/bert/bert-base-uncased' is a path or url to a directory containing tokenizer files.
+Didn't find file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/added_tokens.json. We won't load it.
+Didn't find file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/special_tokens_map.json. We won't load it.
+Didn't find file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/tokenizer_config.json. We won't load it.
+loading file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/vocab.txt
+loading file None
+loading file None
+loading file None
+loading configuration file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/config.json
+Model config {
+  "architectures": [
+    "BertForMaskedLM"
+  ],
+  "attention_probs_dropout_prob": 0.1,
+  "finetuning_task": null,
+  "hidden_act": "gelu",
+  "hidden_dropout_prob": 0.1,
+  "hidden_size": 768,
+  "initializer_range": 0.02,
+  "intermediate_size": 3072,
+  "layer_norm_eps": 1e-12,
+  "max_position_embeddings": 512,
+  "model_type": "bert",
+  "num_attention_heads": 12,
+  "num_hidden_layers": 12,
+  "num_labels": 2,
+  "output_attentions": false,
+  "output_hidden_states": false,
+  "pad_token_id": 0,
+  "pruned_heads": {},
+  "torchscript": false,
+  "type_vocab_size": 2,
+  "vocab_size": 30522
+}
+
+loading weights file /home/ycf19/tools/pretrained_models/bert/bert-base-uncased/pytorch_model.bin
+>>> dataset: laptop
+>>> output_dir: output
+>>> SRD: 5
+>>> learning_rate: 3e-05
+>>> use_unique_bert: True
+>>> use_bert_spc: False
+>>> local_context_focus: fusion
+>>> num_train_epochs: 5.0
+>>> train_batch_size: 16
+>>> dropout: 0.0
+>>> max_seq_length: 80
+>>> eval_batch_size: 32
+>>> eval_steps: 20
+>>> gradient_accumulation_steps: 1
+>>> device: cuda:0
+>>> seed: 1
+>>> bert_model: /home/ycf19/tools/pretrained_models/bert/bert-base-uncased
+>>> data_dir: atepc_datasets/laptop
+Using bos_token, but it is not set yet.
+Using bos_token, but it is not set yet.
+Using eos_token, but it is not set yet.
+Using eos_token, but it is not set yet.
