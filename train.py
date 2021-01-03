@@ -14,9 +14,9 @@ from time import strftime, localtime
 import numpy as np
 import torch
 import torch.nn.functional as F
-from pytorch_transformers.optimization import AdamW
-from pytorch_transformers.tokenization_bert import BertTokenizer
-from pytorch_transformers.modeling_bert import BertModel
+from transformers.optimization import AdamW
+from transformers.tokenization_bert import BertTokenizer
+from transformers.modeling_bert import BertModel
 from seqeval.metrics import classification_report
 from torch.utils.data import (DataLoader, RandomSampler, SequentialSampler, TensorDataset)
 
@@ -68,8 +68,10 @@ def main(config):
         'car': "bert-base-chinese",
         'phone': "bert-base-chinese",
         'notebook': "bert-base-chinese",
-        'laptop': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
-        'restaurant': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased", # "bert-base-uncased",
+        # "bert-base-uncased",
+        'laptop': "/home/ycf19/IJCAI/domain-adapted-atsc/laptops_1mio_ep30",
+        # "bert-base-uncased",
+        'restaurant': "/home/ycf19/IJCAI/domain-adapted-atsc/restaurants_10mio_ep3",
         # for loading domain-adapted BERT
         # 'restaurant': "../bert_pretrained_restaurant",
         # "bert-base-uncased",
