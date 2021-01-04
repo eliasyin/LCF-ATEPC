@@ -21,10 +21,10 @@ class SelfAttention(nn.Module):
         self.tanh = torch.nn.Tanh()
 
     def forward(self, inputs):
-        zero_vec = np.zeros((inputs.size(0), 1, 1, self.opt.max_seq_length))
-        zero_tensor = torch.tensor(zero_vec).float().to(self.opt.device)
-        SA_out = self.SA(inputs, zero_tensor)
-        return self.tanh(SA_out[0])
+        zero_vec = np.zeros((inputs.size(0), 1, 1, self.opt.max_seq_length))  # zero_vec shape : (batch_size, 1, 1, max_seq_len)
+        zero_tensor = torch.tensor(zero_vec).float().to(self.opt.device) # zero_tensor?
+        SA_out = self.SA(inputs, zero_tensor)  # 　attention_mask : zero_tensor, 这里送去了一个全0tensor, 这个参数并没有起到任何作用
+        return self.tanh(SA_out[0])  # (batch, max_seq_len, embed_dim)
 
 class LCF_ATEPC(BertForTokenClassification):
 
@@ -67,7 +67,7 @@ class LCF_ATEPC(BertForTokenClassification):
         polarities = np.zeros((shape[0]))
         i = 0
         for polarity in b_polarities:
-            polarity_idx = np.flatnonzero(polarity+1)
+            polarity_idx = np.flatnonzero(polarity+1) # 返回非零元素的位置
             try:
                 polarities[i] = polarity[polarity_idx[0]]
             except:
@@ -90,7 +90,7 @@ class LCF_ATEPC(BertForTokenClassification):
                 asp_begin = a_ids[0]
             except:
                 asp_begin=0
-            asp_avg_index = (asp_begin * 2 + asp_len) / 2
+            asp_avg_index = (asp_begin * 2 + asp_len) / 2  # 算出aspect的平均下标
             # a_ids[-1] + asp_len + 1 is the position of the last token_i [SEP]
             distances = np.zeros((text_len), dtype=np.float32)
             for i in range(len(distances)):
@@ -137,11 +137,12 @@ class LCF_ATEPC(BertForTokenClassification):
 
     def forward(self, input_ids_spc, token_type_ids=None, attention_mask=None, labels=None, polarities=None, valid_ids=None,
                 attention_mask_label=None):
-        if not self.args.use_bert_spc:
+        if not self.args.use_bert_spc:  # 不启用bert spc的话将输入的spc格式数据和标签转换为bert base格式
             input_ids_spc = self.get_ids_for_local_context_extractor(input_ids_spc)
             labels = self.get_batch_token_labels_bert_base_indices(labels)
-        global_context_out, _ = self.bert_for_global_context(input_ids_spc, token_type_ids, attention_mask)
-        polarity_labels = self.get_batch_polarities(polarities)
+        global_context_out, _ = self.bert_for_global_context(input_ids_spc, 
+                                                    token_type_ids=token_type_ids, attention_mask=attention_mask)
+        polarity_labels = self.get_batch_polarities(polarities)  # 提取出aspect的属性标签，注意数据已经处理过，所以每次一个样本只有一个属性
 
         batch_size, max_len, feat_dim = global_context_out.shape
         global_valid_output = torch.zeros(batch_size, max_len, feat_dim, dtype=torch.float32).to(self.args.device)
@@ -150,13 +151,13 @@ class LCF_ATEPC(BertForTokenClassification):
             for j in range(max_len):
                 if valid_ids[i][j].item() == 1:
                     jj += 1
-                    global_valid_output[i][jj] = global_context_out[i][j]
+                    global_valid_output[i][jj] = global_context_out[i][j]  # 只保留embedding中有效的部分
         global_context_out = self.dropout(global_valid_output)
-        ate_logits = self.classifier(global_context_out)  # 没找到定义？？？？
-        #---------下边是local context
+        ate_logits = self.classifier(global_context_out)  # aspect抽取的结果
+        # ---------下边是 local context
         if self.args.local_context_focus is not None:
 
-            if self.args.use_bert_spc:
+            if self.args.use_bert_spc: # local context 需要从bert spc中提取出bert base的输入
                 local_context_ids = self.get_ids_for_local_context_extractor(input_ids_spc)
             else:
                 local_context_ids = input_ids_spc
@@ -198,7 +199,7 @@ class LCF_ATEPC(BertForTokenClassification):
         pooled_out = self.dropout(pooled_out)
         apc_logits = self.dense(pooled_out)
 
-        if labels is not None:  # 啥意思？
+        if labels is not None:  # labels是每个token的标签，也就是用于判断是不是aspect的标记
             loss_fct = CrossEntropyLoss(ignore_index=0)
             loss_sen = CrossEntropyLoss()
             loss_ate = loss_fct(ate_logits.view(-1, self.num_labels), labels.view(-1))

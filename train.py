@@ -69,13 +69,15 @@ def main(config):
         'phone': "bert-base-chinese",
         'notebook': "bert-base-chinese",
         # "bert-base-uncased",
-        'laptop': "/home/ycf19/IJCAI/domain-adapted-atsc/laptops_1mio_ep30",
+        'laptop': "bert-base-uncased",
+        #"/home/ycf19/IJCAI/domain-adapted-atsc/laptops_1mio_ep30",
         # "bert-base-uncased",
-        'restaurant': "/home/ycf19/IJCAI/domain-adapted-atsc/restaurants_10mio_ep3",
+        'restaurant': "bert-base-uncased",
+        # "/home/ycf19/IJCAI/domain-adapted-atsc/restaurants_10mio_ep3",
         # for loading domain-adapted BERT
         # 'restaurant': "../bert_pretrained_restaurant",
         # "bert-base-uncased",
-        'twitter': "/home/ycf19/tools/pretrained_models/bert/bert-base-uncased",
+        'twitter': "bert-base-uncased",
         'mixed': "bert-base-multilingual-uncased",
     }
 

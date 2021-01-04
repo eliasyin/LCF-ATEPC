@@ -191,41 +191,41 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
     label_map = {label : i for i, label in enumerate(label_list,1)}
 
     features = []
-    for (ex_index,example) in enumerate(examples):
+    for (ex_index, example) in enumerate(examples):  # example : InputExample obj
         text_spc_tokens = example.text_a
         aspect_tokens = example.text_b
         sentence_label = example.sentence_label
         aspect_label = example.aspect_label
-        polaritiylist = example.polarity
+        polaritiylist = example.polarity # 标记aspect和非aspect
         tokens = []
         labels = []
         polarities = []
-        valid = []
+        valid = []  
         label_mask = []
         text_spc_tokens.extend(['[SEP]'])
         text_spc_tokens.extend(aspect_tokens)
-        enum_tokens = text_spc_tokens
-        sentence_label.extend(['[SEP]'])
+        enum_tokens = text_spc_tokens  # text_scp_tokens : sentence tokens + [SEP] + aspect tokens 注意并不是规范的BERT-SPC格式
+        sentence_label.extend(['[SEP]']) 
         # sentence_label.extend(['O'])
         sentence_label.extend(aspect_label)
         label_lists = sentence_label
         # if len(enum_tokens) != len(label_lists):
         #     print(enum_tokens)
         #     print(label_lists)
-        for i, word in enumerate(enum_tokens):
-            token = tokenizer.tokenize(word)
+        for i, word in enumerate(enum_tokens): # spc tokens, 注意这里的enum_tokens并不是标准的bert spc格式, 后边会添加新的符号使之符合标准
+            token = tokenizer.tokenize(word) # bert tokenizer, 使用bert进行分词
             tokens.extend(token)
             label_1 = label_lists[i]
             polarity_1 = polaritiylist[i]
-            for m in range(len(token)):
+            for m in range(len(token)):  
                 if m == 0:
                     labels.append(label_1)
                     polarities.append(polarity_1)
                     valid.append(1)
                     label_mask.append(1)
-                else:
+                else:  # 如果bert对token进一步细分，就会到这里
                     valid.append(0)
-        if len(tokens) >= max_seq_length - 1:
+        if len(tokens) >= max_seq_length - 1:  # 为啥剔除后边2个而不是更多？
             tokens = tokens[0:(max_seq_length - 2)]
             polarities = polarities[0:(max_seq_length - 2)]
             labels = labels[0:(max_seq_length - 2)]
@@ -243,9 +243,9 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         for i, token in enumerate(tokens):
             ntokens.append(token)
             segment_ids.append(0)
-            if len(labels) > i:
+            if len(labels) > i:  # 感觉这个判断是多余的
                 label_ids.append(label_map[labels[i]])
-        ntokens.append("[SEP]")
+        ntokens.append("[SEP]") # 得到标准的bert spc格式
         segment_ids.append(0)
         valid.append(1)
         label_mask.append(1)
@@ -255,7 +255,7 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
         input_mask = [1] * len(input_ids_spc)
         label_mask = [1] * len(label_ids)
         # import numpy as np
-        while len(input_ids_spc) < max_seq_length:
+        while len(input_ids_spc) < max_seq_length: # pad
             input_ids_spc.append(0)
             input_mask.append(0)
             segment_ids.append(0)
@@ -291,10 +291,10 @@ def convert_examples_to_features(examples, label_list, max_seq_length, tokenizer
 
         features.append(
             InputFeatures(input_ids_spc=input_ids_spc,
-                          input_mask=input_mask,
-                          segment_ids=segment_ids,
-                          label_id=label_ids,
-                          polarities=polarities,
-                          valid_ids=valid,
-                          label_mask=label_mask))
+                          input_mask=input_mask,    # spc 非pad部分的 attention mask
+                          segment_ids=segment_ids,  # 全为0, bert 的 token_type_ids
+                          label_id=label_ids,      # aspect抽取的label
+                          polarities=polarities,   # aspect 对应的情感倾向, 非aspect的标记值是-1
+                          valid_ids=valid,         # 
+                          label_mask=label_mask))  # label_mask和input_mask没区别
     return features
